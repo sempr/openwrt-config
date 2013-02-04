@@ -1,0 +1,6 @@
+make image PROFILE=TLWR703 PACKAGES="ip kmod-mppe luci-proto-ppp ppp-mod-pppoe kmod-pppoe luci luci-i18n-chinese ppp-mod-pptp kmod-ledtrig-usbdev kmod-usb-ohci ppp" FILES="files/"
+
+make image PROFILE=TLWR703 PACKAGES="ip kmod-mppe luci-proto-ppp ppp-mod-pppoe kmod-pppoe luci luci-i18n-chinese ppp-mod-pptp kmod-ledtrig-usbdev kmod-usb-ohci ppp block-mount kmod-fs-ext4 kmod-fs-vfat kmod-usb-storage" FILES="files/"
+
+make image PROFILE=TLWR703 PACKAGES="ip kmod-mppe luci-proto-ppp ppp-mod-pppoe kmod-pppoe luci luci-i18n-chinese ppp-mod-pptp kmod-ledtrig-usbdev kmod-usb-ohci ppp block-mount kmod-fs-ext4 kmod-usb-storage kmod-nls-cp437 kmod-fs-vfat kmod-nls-iso8859-1" FILES="files/"
+

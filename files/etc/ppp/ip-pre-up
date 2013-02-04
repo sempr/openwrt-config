@@ -1,0 +1,64 @@
+#!/bin/sh
+export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
+
+if [ "$1" != "pptp-vpn" ]; then
+    exit 0
+fi
+
+OLDGW=`ip route show | grep '^default' | sed -e 's/default via \([^ ]*\).*/\1/'`
+
+if [ $OLDGW == '' ]; then
+    exit 0
+fi
+
+if [ ! -e /tmp/vpn_oldgw ]; then
+    echo $OLDGW > /tmp/vpn_oldgw
+fi
+
+
+route add -net 1.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 14.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 27.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 36.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 39.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 42.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 49.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 58.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 59.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 60.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 61.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 101.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 103.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 106.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 110.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 111.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 112.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 113.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 114.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 115.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 116.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 117.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 118.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 119.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 120.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 121.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 122.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 123.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 124.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 125.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 126.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 169.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 175.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 180.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 182.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 183.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 202.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 203.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 210.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 211.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 218.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 219.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 220.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 221.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 222.0.0.0 netmask 255.0.0.0 gw $OLDGW
+route add -net 223.0.0.0 netmask 255.0.0.0 gw $OLDGW
