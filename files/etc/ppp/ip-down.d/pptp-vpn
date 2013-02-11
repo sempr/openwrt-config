@@ -55,3 +55,10 @@ route del -net 221.0.0.0 netmask 255.0.0.0
 route del -net 222.0.0.0 netmask 255.0.0.0
 route del -net 223.0.0.0 netmask 255.0.0.0
 rm /tmp/vpn_oldgw
+
+ROUTE_DEFAULT=`route | grep default`
+if [ "$ROUTE_DEFAULT" == "" ]; then
+  OLDGW=`route  | grep eth0 | grep -v '*' | awk '{print $2}'`
+  route add default gw $OLDGW
+fi
+
