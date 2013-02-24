@@ -58,7 +58,7 @@ rm /tmp/vpn_oldgw
 
 ROUTE_DEFAULT=`route | grep default`
 if [ "$ROUTE_DEFAULT" == "" ]; then
-  OLDGW=`route  | grep eth0 | grep -v '*' | awk '{print $2}'`
+  OLDGW=`route  | grep eth0 | grep -v '*' | awk '{print $2}' | head -1`
   route add default gw $OLDGW
 fi
 
