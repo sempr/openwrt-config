@@ -1,0 +1,22 @@
+#!/bin/sh
+export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
+
+if [ "$1" != "pptp-vpn" ]; then
+    exit 0                   
+fi
+
+OLDGW=`cat /tmp/vpn_oldgw`
+route add default gw $OLDGW
+
+for x in `cat /etc/ppp/outip.txt`; do
+    route del -net $x netmask 255.0.0.0
+done
+
+rm /tmp/vpn_oldgw
+
+ROUTE_DEFAULT=`route | grep default`
+if [ "$ROUTE_DEFAULT" == "" ]; then
+  OLDGW=`route  | grep eth0 | grep -v '*' | awk '{print $2}' | head -1`
+  route add default gw $OLDGW
+fi
+
