@@ -1,0 +1,25 @@
+#!/bin/sh
+export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
+
+if [ "$1" != "pptp-vpn" ]; then
+    exit 0
+fi
+
+OLDGW=`route | grep '^default' | awk '{print $2}'`
+if [ $OLDGW == '' ]; then
+    exit 0
+fi
+
+if [ ! -e /tmp/vpn_oldgw ]; then
+    echo $OLDGW > /tmp/vpn_oldgw
+fi
+
+IFS_old=$IFS
+IFS=$'\n'
+
+for x in `cat /etc/ppp/cnip.txt`
+do
+    MCMD="route add -net $x gw $OLDGW";
+    eval $MCMD;
+done
+IFS=$IFS_old
