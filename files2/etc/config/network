@@ -1,3 +1,4 @@
+
 config interface 'loopback'
 	option ifname 'lo'
 	option proto 'static'
@@ -19,7 +20,10 @@ config interface 'wan'
 
 config interface 'vpn'
 	option proto 'pptp'
-	option server ''
 	option username ''
 	option password ''
+	option server ''
+	option 'defaultroute' '0'
+	option 'peerdns' '0'
+
 
