@@ -1,8 +1,8 @@
 
 config system
 	option hostname 'OpenWrt'
-	option zonename 'UTC'
-	option timezone 'GMT0'
+	option zonename 'Asia/Shanghai'
+	option timezone 'CST-8'
 	option conloglevel '8'
 	option cronloglevel '8'
 
