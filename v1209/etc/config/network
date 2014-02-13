@@ -1,0 +1,28 @@
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config interface 'lan'
+	option type 'bridge'
+	option proto 'static'
+	option ipaddr '10.168.0.1'
+	option netmask '255.255.255.0'
+	option _orig_ifname 'eth0 wlan0'
+	option _orig_bridge 'true'
+	option ifname 'eth0.1'
+
+config interface 'wan'
+	option proto 'dhcp'
+	option ifname 'eth0'
+
+config interface 'vpn'
+	option proto 'pptp'
+	option server ''
+	option username ''
+	option password ''
+	option defaultroute '0'
+	option peerdns '0'
+
