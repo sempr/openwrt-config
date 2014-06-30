@@ -18,11 +18,3 @@ config interface 'wan'
 	option proto 'dhcp'
 	option ifname 'eth0'
 
-config interface 'vpn'
-	option proto 'pptp'
-	option server ''
-	option username ''
-	option password ''
-	option defaultroute '0'
-	option peerdns '0'
-

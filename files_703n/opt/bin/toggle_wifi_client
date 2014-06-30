@@ -1,0 +1,4 @@
+#!/bin/sh
+
+logger toggle_wifi_client "<==================="
+
