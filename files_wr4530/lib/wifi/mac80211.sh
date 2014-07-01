@@ -596,7 +596,6 @@ config wifi-iface
 	option network  lan
 	option mode     ap
 	option ssid     OpenWrt_${mac_suffix}
-	option encryption none
 	option encryption 'psk-mixed'
 	option key '1234567890'
 EOF

@@ -35,15 +35,3 @@ config switch_vlan
 	option vlan '2'
 	option ports '0t 1'
 
-config interface 'vpn'
-	option proto 'pptp'
-	option username ''
-	option password ''
-	option defaultroute '0'
-	option peerdns '0'
-	option server ''
-
-config route
-	option interface 'vpn'
-	option target '8.8.8.8'
-

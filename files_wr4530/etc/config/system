@@ -1,6 +1,6 @@
 
 config system
-	option hostname 'OpenWrt'
+	option hostname 'OpenWrt-703n'
 	option conloglevel '8'
 	option cronloglevel '8'
 	option zonename 'Asia/Shanghai'
@@ -12,22 +12,23 @@ config timeserver 'ntp'
 	list server '2.openwrt.pool.ntp.org'
 	list server '3.openwrt.pool.ntp.org'
 
-config led 'led_usb1'
-	option name 'USB1'
-	option sysfs 'tp-link:green:usb1'
-	option trigger 'usbdev'
-	option dev '1-1.1'
-	option interval '50'
+config button
+        option button   reset
+        option action   released
+        option handler  "/opt/bin/toggle_wifi_client"
+        option min      0
+        option max      1
 
-config led 'led_usb2'
-	option name 'USB2'
-	option sysfs 'tp-link:green:usb2'
-	option trigger 'usbdev'
-	option dev '1-1.2'
-	option interval '50'
+config button
+        option button   reset
+        option action   released
+        option handler  "/opt/bin/toggle_ap"
+        option min      2
+        option max      5
 
-config led 'led_wlan2g'
-	option name 'WLAN2G'
-	option sysfs 'tp-link:blue:wlan2g'
-	option trigger 'phy0tpt'
-
+config button
+        option button   reset
+        option action   released
+        option handler  "/opt/bin/reset_to_origin"
+        option min      6
+        option max      20

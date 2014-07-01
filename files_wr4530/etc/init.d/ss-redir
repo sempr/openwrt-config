@@ -1,0 +1,41 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2006-2011 OpenWrt.org
+
+START=95
+STOP=95
+
+
+IPTABLES="/usr/sbin/iptables"
+
+SS_HOST="127.0.0.1"
+SS_PORT="1080"
+NAT_CN="SHADOWSOCKSNAT"
+LAN_NET="10.0.1.1/24"
+
+start_rules() {
+        ${IPTABLES} -t nat -N ${NAT_CN}
+        ${IPTABLES} -t nat -A ${NAT_CN} -d ${SS_HOST} -j RETURN
+        ${IPTABLES} -t nat -A ${NAT_CN} -p tcp -j REDIRECT --to-ports ${SS_PORT}
+        ${IPTABLES} -t nat -I PREROUTING -s ${LAN_NET} -m set --match-set vpn dst -j ${NAT_CN}
+        echo ">> init table shadowsocks nat ok."
+}
+
+stop_rules() {
+        ${IPTABLES} -t nat -D PREROUTING -s ${LAN_NET} -m set --match-set vpn dst -j ${NAT_CN}
+        ${IPTABLES} -t nat -F ${NAT_CN}
+        ${IPTABLES} -t nat -X ${NAT_CN}
+        echo ">> remove table shadowsocks nat ok."
+}
+
+start() {
+    echo ">> starting shadowsocks..."
+    start_rules;
+    /usr/bin/ss-redir -c /etc/shadowsocks.json -f /var/run/shadowsocks.pid
+}
+
+stop() {
+    echo ">> shadowsocks stopped."
+    stop_rules;
+    kill -9 `cat /var/run/shadowsocks.pid`
+}
+
