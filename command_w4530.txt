@@ -1,0 +1,1 @@
+make image PROFILE=TLWDR4300 PACKAGES="ip ipset iptables-mod-ipopt kmod-ipt-ipopt luci luci-theme-bootstrap luci-i18n-chinese ppp-mod-pptp kmod-ledtrig-usbdev kmod-usb-ohci block-mount kmod-fs-ext4 kmod-usb-storage kmod-nls-cp437 kmod-fs-vfat kmod-nls-iso8859-1" FILES="files/"

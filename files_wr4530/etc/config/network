@@ -9,16 +9,14 @@ config interface 'lan'
 	option ifname 'eth0.1'
 	option type 'bridge'
 	option proto 'static'
-	option ipaddr '10.0.0.1'
+	option ipaddr '10.0.1.1'
 	option netmask '255.255.255.0'
 
 config interface 'wan'
 	option ifname 'eth0.2'
 	option _orig_ifname 'eth0.2'
 	option _orig_bridge 'false'
-	option proto 'pppoe'
-	option username 'hz200059'
-	option password '200059'
+	option proto 'dhcp'
 
 config switch
 	option name 'eth0'
