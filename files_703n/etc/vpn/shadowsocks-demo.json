@@ -1,0 +1,8 @@
+{
+    "server":"v2.1e20.com",
+    "server_port":8588,
+    "local_port":1080,
+    "password":"sempr!!!",
+    "timeout":240,
+    "method":"aes-256-cfb"
+}
